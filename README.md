@@ -137,6 +137,15 @@ valueAtIndex1 = array[1] // 11
 [int*50, string*50] array = (0...*50, "hello"...*50) // Works with any types
 size = array.length // 100
 // Note that .length is not a real variable, instead its a placeholder. The compiler replaces it with the actual numeric value.
+
+// switch supports arrays
+array = (1, 2, 3)
+txt = ""
+switch x {
+  if (1, a, b) { txt = "Contains a 1 at first position!" }
+  if (a, 1, b) { txt = "Contains a 1 at second position!" }
+  else { txt = "Unknown number pattern!" }
+}
 ```
 
 ### Extending functionality
@@ -288,11 +297,11 @@ c = 0, d = 0
 ```
 
 ### Special functions
-There are different types of functions / code blocks, which all extend the `code` type: `function, if, if else, else if, for, for each, while`.
+There are different types of functions / code blocks, which all extend the `code` type: `function, if, if else, else if, switch, for, for each, while`.
 These will be explained further below. 
 
 <details>
- <summary><h4>Logic: if, if else, else if</h4></summary>
+ <summary><h4>Logic: if, if else, else if, switch</h4></summary>
  
 ```java
 a = true
@@ -317,6 +326,21 @@ myLogic()
 // do not confuse the above with this:
 result = if a use false
 // result is now false and not a function because of the "use" keyword
+
+// note that switch also supports arrays/tuples (see that section for details)
+x = 10
+txt = "Its a 10!"
+switch x {
+  if 10 { txt = "Its a 10!" }
+  if 3 { txt = "Its a 3!" }
+  else { txt = "Its another number!" }
+}
+
+// inline example
+switch x 
+  if 10 do txt = "Its a 10!"
+  if 3 do txt = "Its a 3!"
+  else do txt = "Its another number!"
 ```
 </details>
 
