@@ -110,7 +110,7 @@ Primitive types (listed below) are available in all your code without the need o
 |--------------------|------------|---------------------------------------------------------------------------------------------------|
 | `v = (){}`         | code       | Single code block                                                                                 |
 | `v = ObjectName()` | ObjectName | Comes from the ObjectName.a file you created. If in another folder requires an import to be used. ObjectName is a placeholder for anything you might come up with. |
-| `v = (0, 1, 2)` | array/tuple | Fixed size array of elements. Inspired by the function arguments syntax. Supports different types per index/element. |
+| `v = (0, 1, 2)` | `[type]` | Fixed size array of elements. Inspired by the function arguments syntax. Supports different types per index/element. |
 
 ### Attributes
 Variables can have additional/optional attributes which get added 
@@ -118,9 +118,24 @@ at the start: `hidden final a = 10`
  - `hidden` hides the variable from other files. 
 You can disable this by adding `show hidden` to the start of your file.
  - `final` makes the variable unchangeable after first value assignment.
+ - `global` makes the variable globally accessible in the format `ObjectName.myGlobalVariable` and thus the variable lives the whole runtime of the program.
 
 ### Arrays/Tuples
- - `[<size>]` creates an array of the current type, of the specified size (integer type).
+Additional features of arrays/tuples and some syntax clarification if you need to write down the type of an array:
+```A
+[int] array = (10, 11, 12) // Type error, max size is not given, more accurately its wrong 1 != 3
+[int] array = (10) // Valid, correct max size: 1
+[int*1] array = (10) // Same as above
+[int*3] array = (10, 11, 12) // Valid: max size info given, in this case its 3
+
+valueAtIndex0 = array[0] // 10, use brackets to access the value at an index
+valueAtIndex1 = array[1] // 11
+
+[int, string] array = (10, "hello") // You can use any amount of different types
+
+[int*100] array = (0...*100) // Fill with 0 values
+[int*50, string*50] array = (0...*50, "hello"...*50) // Works with any types
+```
 
 ### Extending functionality
 Primitives are strictly speaking not really primitives but objects located in `./a`, thus you can also extend their functionality by using the object parts feature explained further below. 
@@ -294,7 +309,7 @@ if a > b do a = false
 else if b do b = false // elseIf example, also optional
 
 // you can easily make it a variable/function
-myLogic = { if a do a = false }
+myLogic = if a do a = false
 myLogic()
 ```
 </details>
@@ -504,6 +519,20 @@ must provide your own implementation for all of them.
 inherits AnotherObject, AnotherObject2
 implements AnotherObject3, /path/to/AnotherObject4
 ```
+
+
+
+## Object Semantic Versioning
+This is more relevant for library developers since it forces you at compile time to update your objects' version if you
+did either a major/breaking change, an addition like adding a new function or variable, or minor code changes / bug fixes.
+To enable this feature simply add something like `version 1.0.0` to the top of your file.
+
+Its usage is optional, but it's recommended for any objects you expect your users to touch, if you are a library developer.
+
+If a user uses your library and wants to ensure the final executable contains no duplicate dependencies
+and the user has another library (lets call it XTremeLib) that uses your library too, but an older version, now the compiler can check
+for version conflicts that would otherwise only be visible through bugs at runtime, since the user has to choose
+a specific version of your library, which may break XTremeLib.
 
 
 
