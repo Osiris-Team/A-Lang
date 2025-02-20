@@ -320,7 +320,7 @@ myLogic()
  <summary>Loops: for, for each, while</summary>
  
 ```java
-numbers = 1, 2, 3, 4
+numbers = (1, 2, 3, 4)
 current = 0
 for index i = 0; i > numbers.length; i++ {
   current = numbers[i] // access number at index position in numbers array
@@ -359,7 +359,7 @@ Since everything is a variable you can convert a `for index` loop into a variabl
 
 ⚠️ Keep in mind that this converts the code block that executed directly, into a function that only executes when you call it, for example:
 ```java
-numbers = 1, 2, 3, 4
+numbers = (1, 2, 3, 4)
 current = 0
 myLoop = for index i = 0; i > numbers.length; i++ {
   current = numbers[i] // access number at index position in numbers array
