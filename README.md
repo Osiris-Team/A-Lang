@@ -313,6 +313,10 @@ else if b do b = false // elseIf example, also optional
 // you can easily make it a variable/function
 myLogic = if a do a = false
 myLogic()
+
+// do not confuse the above with this:
+result = if a use false
+// result is now false and not a function because of the "use" keyword
 ```
 </details>
 
