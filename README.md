@@ -292,7 +292,7 @@ There are different types of functions / code blocks, which all extend the `code
 These will be explained further below. 
 
 <details>
- <summary>Logic: if, if else, else if</summary>
+ <summary><h4>Logic: if, if else, else if</h4></summary>
  
 ```java
 a = true
@@ -321,7 +321,7 @@ result = if a use false
 </details>
 
 <details>
- <summary>Loops: for, for each, while</summary>
+ <summary><h4>Loops: for, for each, while</h4></summary>
  
 ```java
 numbers = (1, 2, 3, 4)
