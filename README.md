@@ -208,11 +208,74 @@ setTo10(myVariable)
 // myVariable is now 10
 ```
 
-There are different types of code blocks, which all extend the `code` type: `function, if, if else, else if, for, for each, while`.
+
+### Side effect-free functions and clone
+The compiler enforces the usage of double parenthesis when defining and using a function that has no side effects,
+meaning that it doesn't update its arguments or other variables/fields of the object (except global fields). For this to work you either only read the argument or clone it and update its clone only.
+
+So we can modify the previous example, which removes the whole purpose of the setTo10 function, however it should clarify everything:
+```A
+setTo10 = ((clone int a)) {
+  a = 10
+}
+myVariable = 27
+setTo10((myVariable))
+// myVariable is still 27, because the operation is performed on a clone/copy
+```
+
+The `clone` keyword in a function parameter simply is a quality of life addition to reduce code, the previous example would look much worse without it:
+```A
+setTo10 = ((int a)) {
+  a1 = a.clone()
+  a1 = 10
+}
+myVariable = 27
+setTo10((myVariable))
+// myVariable is still 27, because the operation is performed on a clone/copy
+```
+
+<details>
+<summary>TODO How to reduce code duplication for libraries?</summary>
+ 
+ Let's say we have a string object and we want to provide a `str.replace("x", "y")` function with replaces all x characters with y in this case,
+ we would know that it affects the string directly / itself. Now we also want to provide `str1 = str.replace(("x", "y"))` function which does the same,
+ however returns a new string with the changes. Does the library developer really need to define the function twice and code the logic twice?
+</details>
+
+
+### Function overloading
+Function overloading is not allowed. 
+```a
+myFunction = {}
+myFunction = (int a) {} // error
+```
+This ensures that less duplicate documentation is written
+and related code is inside the same function.
+
+Optional function parameters should help you out if you allow multiple different types of inputs in your function for example.
+This is documented further below.
+
+
+### Return multiple values
+Sometimes you want to return multiple values from a single function.
+In most languages you would need to create a new class or a new datatype which can be annoying.
+A however has a built in solution for this to make it easier:
+```A
+myFunction = returns int a, int b {
+  return 10, 20
+}
+a, b = myFunction()
+// or
+c = 0, d = 0
+(c, d) = myFunction()
+```
+
+### Special functions
+There are different types of functions / code blocks, which all extend the `code` type: `function, if, if else, else if, for, for each, while`.
 These will be explained further below. 
 
 <details>
- <summary>Logic: if, ifElse, elseIf</summary>
+ <summary>Logic: if, if else, else if</summary>
  
 ```A
 a = true
@@ -275,68 +338,17 @@ while i < numbers.length do current = numbers[i]; i++
 ```
 </details>
 
+Since everything is a variable you can convert a `for index` loop into a variable.
 
-### Side effect-free functions and clone
-The compiler enforces the usage of double parenthesis when defining and using a function that has no side effects,
-meaning that it doesn't update its arguments or other variables/fields of the object (except static fields). For this to work you either only read the argument or clone it and update its clone only.
-
-So we can modify the previous example, which removes the whole purpose of the setTo10 function, however it should clarify everything:
-```A
-setTo10 = ((clone int a)) {
-  a = 10
+⚠️ Keep in mind that this converts the code block that executed directly, into a function that only executes when you call it, for example:
+```
+numbers = 1, 2, 3, 4
+current = 0
+myLoop = for index i = 0; i > numbers.length; i++ {
+  current = numbers[i] // access number at index position in numbers array
 }
-myVariable = 27
-setTo10((myVariable))
-// myVariable is still 27, because the operation is performed on a clone/copy
+myLoop() // Only executed once you call it
 ```
-
-The `clone` keyword in a function parameter simply is a quality of life addition to reduce code, the previous example would look much worse without it:
-```A
-setTo10 = ((int a)) {
-  a1 = a.clone()
-  a1 = 10
-}
-myVariable = 27
-setTo10((myVariable))
-// myVariable is still 27, because the operation is performed on a clone/copy
-```
-
-<details>
-<summary>TODO How to reduce code duplication for libraries?</summary>
- 
- Let's say we have a string object and we want to provide a `str.replace("x", "y")` function with replaces all x characters with y in this case,
- we would know that it affects the string directly / itself. Now we also want to provide `str1 = str.replace(("x", "y"))` function which does the same,
- however returns a new string with the changes. Does the library developer really need to define the function twice and code the logic twice?
-</details>
-
-
-### Function overloading
-Function overloading is not allowed. 
-```a
-myFunction = {}
-myFunction = (int a) {} // error
-```
-This ensures that less duplicate documentation is written
-and related code is inside the same function.
-
-Optional function parameters should help you out if you allow multiple different types of inputs in your function for example.
-This is documented further below.
-
-
-### Return multiple values
-Sometimes you want to return multiple values from a single function.
-In most languages you would need to create a new class or a new datatype which can be annoying.
-A however has a built in solution for this to make it easier:
-```A
-myFunction = returns int a, int b {
-  return 10, 20
-}
-a, b = myFunction()
-// or
-c = 0, d = 0
-(c, d) = myFunction()
-```
-
 
 
 ## Null safety and optional parameters
@@ -380,7 +392,7 @@ Person.count // == 2
 ```
 `Person`
 ```A
-static count = 0
+global count = 0
 
 constructor = (int age) {
     count++
