@@ -15,7 +15,10 @@ execute `./a/a` on Linux or `.\a\a.exe` if you are on Windows (this starts the A
 
 
 
-## Core Ideas
+<details>
+<summary>If you want a more in-depth overview click here to show: Core Ideas, Highlights and Status</summary>
+
+ ## Core Ideas
  - Tiny standard library, to keep the focus on language development. This will change once the language is more mature.
  - Allow easy use of GPU / hardware acceleration, instead of only writing CPU code.
  - Provide cross-platform methods for all input and output devices, like (touch-)screens, keyboards, files, etc.
@@ -36,6 +39,7 @@ execute `./a/a` on Linux or `.\a\a.exe` if you are on Windows (this starts the A
 - No release yet, still in early development (spec- and implementation-wise). Once the basics are done 1.0 will get released.
 - This repository contains the A compiler which is written in Java and misses a bunch of the features mentioned in this file.
 However it more or less lays the groundwork and style for the compiler.
+</details>
 
 
 
