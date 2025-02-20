@@ -135,6 +135,8 @@ valueAtIndex1 = array[1] // 11
 
 [int*100] array = (0...*100) // Fill with 0 values
 [int*50, string*50] array = (0...*50, "hello"...*50) // Works with any types
+size = array.length // 100
+// Note that .length is not a real variable, instead its a placeholder. The compiler replaces it with the actual numeric value.
 ```
 
 ### Extending functionality
