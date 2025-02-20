@@ -42,7 +42,7 @@ However it more or less lays the groundwork and style for the compiler.
 ## Statements
 Multiple statements on a single line must be separated by a semicolon `;` otherwise
 the semicolon is optional.
-```A
+```java
 a = 10
 b = 20; c = 30
 ```
@@ -59,7 +59,7 @@ With this Python-like approach, we do not know if it's the initial usage / decla
 Which I do not really like because of github PRs for example where the code is basically in its raw text form and only has some syntax highlighting.
 
 Thus maybe instead something like this?
-```A
+```java
 new a = 10
 new b = 20; new c = 30
 ```
@@ -67,7 +67,7 @@ I think in this case we could directly just insert the type name instead of "new
 this can also decrease readability.
 
 Another problem with this is that it might seem we also create a "new" object with this keyword even though we only create a new variable/pointer, for example: 
-```A
+```java
 new a = 10
 new b = a
 ```
@@ -77,7 +77,7 @@ new b = a
 ## Comments
 Everything inside a comment is ignored. 
 `//` marks the start of a comment and goes until the end of the line.
-```A
+```java
 a = 1 // Single line comment
 ```
 
@@ -122,7 +122,7 @@ You can disable this by adding `show hidden` to the start of your file.
 
 ### Arrays/Tuples
 Additional features of arrays/tuples and some syntax clarification if you need to write down the type of an array:
-```A
+```java
 [int] array = (10, 11, 12) // Type error, max size is not given, more accurately its wrong 1 != 3
 [int] array = (10) // Valid, correct max size: 1
 [int*1] array = (10) // Same as above
@@ -170,7 +170,7 @@ to only run if you call it, but the code in a scope is expected to run always di
 
 A scope is code within brackets `{}`. 
 Variables created within a scope are not accessible from outside:
-```A
+```java
 a = 3
 {
   b = 0
@@ -182,7 +182,7 @@ a = 3
 
 Let's say the code above is located in the `Utils` file and we want to access 
 it in our `Main` file:
-```A
+```java
 Utils utils = Utils()
 utils.a // Can be accessed
 utils.b // Error: Cannot be accessed
@@ -192,7 +192,7 @@ utils.b // Error: Cannot be accessed
 ## Functions
 Functions are special code blocks that are held by the `code` variable.
 Note that functions are `final` by default due to the limitations by the underlying C language.
-```A
+```java
 b = 0;
 setNumber = {
   b = 9
@@ -206,7 +206,7 @@ getNumber = returns int {
 result = getNumber() // Executes the code and returns b
 ```
 Parameters can be passed over too like so:
-```A
+```java
 multiply = returns int (int a, int b) {
   return a * b
 }
@@ -214,7 +214,7 @@ multiply(10, 20)
 ```
 Note that changing a parameter's value in a function,
 affects the original variables value:
-```A
+```java
 setTo10 = (int a) {
   a = 10
 }
@@ -229,7 +229,7 @@ The compiler enforces the usage of double parenthesis when defining and using a 
 meaning that it doesn't update its arguments or other variables/fields of the object (except global fields). For this to work you either only read the argument or clone it and update its clone only.
 
 So we can modify the previous example, which removes the whole purpose of the setTo10 function, however it should clarify everything:
-```A
+```java
 setTo10 = ((clone int a)) {
   a = 10
 }
@@ -239,7 +239,7 @@ setTo10((myVariable))
 ```
 
 The `clone` keyword in a function parameter simply is a quality of life addition to reduce code, the previous example would look much worse without it:
-```A
+```java
 setTo10 = ((int a)) {
   a1 = a.clone()
   a1 = 10
@@ -260,7 +260,7 @@ setTo10((myVariable))
 
 ### Function overloading
 Function overloading is not allowed. 
-```a
+```java
 myFunction = {}
 myFunction = (int a) {} // error
 ```
@@ -275,7 +275,7 @@ This is documented further below.
 Sometimes you want to return multiple values from a single function.
 In most languages you would need to create a new class or a new datatype which can be annoying.
 A however has a built in solution for this to make it easier:
-```A
+```java
 myFunction = returns int a, int b {
   return 10, 20
 }
@@ -292,7 +292,7 @@ These will be explained further below.
 <details>
  <summary>Logic: if, if else, else if</summary>
  
-```A
+```java
 a = true
 b = true
 if a { // short version for: if a == true
@@ -317,7 +317,7 @@ myLogic()
 <details>
  <summary>Loops: for, for each, while</summary>
  
-```A
+```java
 numbers = 1, 2, 3, 4
 current = 0
 for index i = 0; i > numbers.length; i++ {
@@ -356,7 +356,7 @@ while i < numbers.length do current = numbers[i]; i++
 Since everything is a variable you can convert a `for index` loop into a variable.
 
 ⚠️ Keep in mind that this converts the code block that executed directly, into a function that only executes when you call it, for example:
-```
+```java
 numbers = 1, 2, 3, 4
 current = 0
 myLoop = for index i = 0; i > numbers.length; i++ {
@@ -374,7 +374,7 @@ Optional function parameters must have a default value.
 
 You can make parameters optional by writing `optional: var1, var2, etc...`.
 Here is an example:
-```A
+```java
 multiply = returns int (int a, int b, optional: int c = 1, int d = 1){ 
   return a * b * c * d
 }
@@ -393,7 +393,7 @@ Objects get initialized by using the `ObjectName()`
 like so:
 
 `Main`
-```A
+```java
 john = Person(63)
 peter = Person(35)
 
@@ -406,7 +406,7 @@ peter.id // == 2
 Person.count // == 2
 ```
 `Person`
-```A
+```java
 global count = 0
 
 constructor = (int age) {
@@ -436,7 +436,7 @@ project
     - AnotherLib.a
 ```
 `MathLib` can be used in `Main` like so:
-```A
+```java
 math = MathLib()
 ```
 `MathLib` from /folder can be used in `Main` like so:
@@ -447,7 +447,7 @@ math = MathLib()
 math1 = ./folder/MathLib()
 ```
 Normally you just enter the files'/folders' relative path on the top:
-```A
+```java
 ./folder/AnotherLib
 
 // Otherwise you can import the whole folder:
@@ -515,7 +515,7 @@ you also need to specify the variable name behind the object like so (myVariable
 must provide your own implementation for all of them.
 - Their constructors must also be implemented, and are called in the order they were listed.
 
-```A
+```java
 inherits AnotherObject, AnotherObject2
 implements AnotherObject3, /path/to/AnotherObject4
 ```
@@ -549,7 +549,7 @@ contents into `./libs/lib_author/lib_name/lib_version`.
 
 To use that lib in your code, you would simply import it by entering
 its path at the top of your file.
-```A
+```java
 ./libs/lib_author/lib_name/lib_version/SomeObject
 ```
 
