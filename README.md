@@ -115,7 +115,7 @@ Primitive types (listed below) are available in all your code without the need o
 | `{}`               | code       | Single code block.                                                                                |
 | `v = {}` or `v = (){}`  | function   | Function without arguments and empty body. As you can see you can "promote" any code block into a function easily by giving it a name/variable. |
 | `v = ObjectName()` | ObjectName | Comes from the ObjectName.a file you created. If in another folder requires an import to be used. ObjectName is a placeholder for anything you might come up with. |
-| `v = (0, 1, 2)` | `[type]` | Fixed size array of elements. Inspired by the function arguments syntax. Supports different types per index/element. |
+| `v = (0, 1, 2)` | `[int*3]` | Fixed size array of elements. Inspired by the function arguments syntax. Supports different types per index/element. If defining the type you must provide the type of its elements and their amounts. |
 
 ### Attributes
 Variables can have additional/optional attributes which get added 
