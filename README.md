@@ -296,7 +296,7 @@ array = myFunction()
 a = array[0] // == 10
 b = array[1] // == 20
 // or simpler:
-(a, b) = myFunction() // a == 10, b == 20
+a, b = myFunction() // a == 10, b == 20
 ```
 
 ### Special functions
