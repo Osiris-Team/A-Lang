@@ -50,6 +50,9 @@ the semicolon is optional.
 a = 10
 b = 20; c = 30
 ```
+
+Something like `a = b` is performed by copying/cloning the value of b into a, instead of overriding the pointer a to avoid "linking" the variables.
+
 <details>
  <summary>How is this still typesafe?</summary>
 
@@ -77,7 +80,7 @@ new b = a
 ```
 </details>
 
-Something like `a = b` is performed by copying/cloning the value of b into a, instead of overriding the pointer a to avoid "linking" the variables.
+
 
 ## Comments
 Everything inside a comment is ignored. 
