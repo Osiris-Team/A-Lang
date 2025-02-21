@@ -198,7 +198,8 @@ utils.b // Error: Cannot be accessed
 ```
 </details>
 
-⚠️ Note that a code block executes directly, but you can promote it to a function by naming it, which defers execution until you call it.
+⚠️ Note that a code block executes directly, but you can promote it to a function by naming it. Thus do not forget
+to call the function to actually execute your code if you did so.
 
 ## Functions
 Functions are special code blocks that are held by the `code` variable.
