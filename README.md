@@ -16,7 +16,7 @@ execute `./a/a` on Linux or `.\a\a.exe` if you are on Windows (this starts the A
 
 
 <details>
-<summary>If you want a more in-depth overview click here to show: Core Ideas, Highlights and Status</summary>
+<summary><b>Core Ideas, Highlights and Status</b></summary>
 
  ## Core Ideas
  - Tiny standard library, to keep the focus on language development. This will change once the language is more mature.
