@@ -77,6 +77,7 @@ new b = a
 ```
 </details>
 
+Something like `a = b` is performed by copying/cloning the value of b into a, instead of overriding the pointer a to avoid "linking" the variables.
 
 ## Comments
 Everything inside a comment is ignored. 
