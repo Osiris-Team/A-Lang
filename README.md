@@ -202,8 +202,9 @@ utils.b // Error: Cannot be accessed
 to call the function to actually execute your code if you did so.
 
 ## Functions
-Functions are special code blocks that are held by the `code` variable.
-Note that functions are `final` by default due to the limitations by the underlying C language.
+Functions are special code blocks that are held by the `function` variable.
+Note that functions are `final` by default due to the limitations by the underlying C language and
+we must provide type information for the arguments and return type.
 ```java
 b = 0;
 setNumber = {
