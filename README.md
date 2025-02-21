@@ -177,13 +177,6 @@ benefits as statically typed languages.
 
 
 ## Code/Scopes
-
-<details>
-<summary>Removed</summary>
-
-The feature below will not be included in the language because it clashes with the function type. More specifically because the code within a function is expected
-to only run if you call it, but the code in a scope is expected to run always directly and because they look very similar this might cause uneccessary confusion.
-
 A scope is code within brackets `{}`. 
 Variables created within a scope are not accessible from outside:
 ```java
@@ -204,6 +197,8 @@ utils.a // Can be accessed
 utils.b // Error: Cannot be accessed
 ```
 </details>
+
+⚠️ Note that a code block executes directly, but you can promote it to a function by naming it, which defers execution until you call it.
 
 ## Functions
 Functions are special code blocks that are held by the `code` variable.
