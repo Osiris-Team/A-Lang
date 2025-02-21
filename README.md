@@ -88,9 +88,9 @@ a = 1 // Single line comment
 
 
 ## Values, Variables and Types
-A variable is a value with a name/reference. 
-It's a particular set of bits or type of data located in the RAM that can be modified.
-Primitive types (listed below) are available in all your code without the need of importing something.
+- A variable is a value with a name/reference. It's a particular set of bits or type of data located in the RAM that can be modified.
+- Primitive types (listed below) are available in all your code without the need of importing something.
+- Providing the type before the variable name is optional, meaning both `int x = 10` and `x = 10` are valid, since types are inferred.
 
 ### Numbers
 | Usage                 | Name    | Description                                                                                                         |
