@@ -289,13 +289,14 @@ Sometimes you want to return multiple values from a single function.
 In most languages you would need to create a new class or a new datatype which can be annoying.
 A however has a built in solution for this to make it easier:
 ```java
-myFunction = returns int a, int b {
-  return 10, 20
+myFunction = returns [int*2] {
+  return (10, 20)
 }
-a, b = myFunction()
-// or
-c = 0, d = 0
-(c, d) = myFunction()
+array = myFunction()
+a = array[0] // == 10
+b = array[1] // == 20
+// or simpler:
+(a, b) = myFunction() // a == 10, b == 20
 ```
 
 ### Special functions
