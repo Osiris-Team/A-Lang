@@ -95,13 +95,13 @@ Primitive types (listed below) are available in all your code without the need o
 ### Numbers
 | Usage                 | Name    | Description                                                                                                         |
 |-----------------------|--------|---------------------------------------------------------------------------------------------------------------------|
-| `v = true; v = false` | boolean | Has only two possible values: true (1) and false (0). Represents one bit of information.                            |
+| `v = true` or `v = false` | boolean | Has only two possible values: true (1) and false (0). Represents one bit of information.                            |
 | `v = 1b`              | byte    | 8-bit signed two's complement integer. It has a minimum value of -128 and a maximum value of 127 (inclusive).       |
 | `v = 1s`              | short   | 16-bit signed two's complement integer. It has a minimum value of -32,768 and a maximum value of 32,767 (inclusive) |
 | `v = 1`               | int     | 32-bit signed two's complement integer, which has a minimum value of -2^31 and a maximum value of 2^31 -1.          |
 | `v = 1l`              | long    | 64-bit two's complement integer. The signed long has a minimum value of -2^63 and a maximum value of 2^63 -1.       |
 | `v = 1f`              | float   | Single-precision 32-bit IEEE 754 floating point.                                                                    |
-| `v = 1d; v = 1.0`     | double  | Double-precision 64-bit IEEE 754 floating point.                                                                    |
+| `v = 1d` or `v = 1.0`     | double  | Double-precision 64-bit IEEE 754 floating point.                                                                    |
 
 ### Text
 | Usage          | Name   | Description                                                                                                                       |
@@ -112,7 +112,8 @@ Primitive types (listed below) are available in all your code without the need o
 ### Special 
 | Usage              | Name       | Description                                                                                       |
 |--------------------|------------|---------------------------------------------------------------------------------------------------|
-| `v = (){}`         | code       | Single code block                                                                                 |
+| `{}`               | code       | Single code block.                                                                                |
+| `v = {}` or `v = (){}`  | function   | Function without arguments and empty body. As you can see you can "promote" any code block into a function easily by giving it a name/variable. |
 | `v = ObjectName()` | ObjectName | Comes from the ObjectName.a file you created. If in another folder requires an import to be used. ObjectName is a placeholder for anything you might come up with. |
 | `v = (0, 1, 2)` | `[type]` | Fixed size array of elements. Inspired by the function arguments syntax. Supports different types per index/element. |
 
