@@ -51,8 +51,8 @@ a = 10
 b = 20; c = 30
 ```
 
-Something like `a = b` is performed by copying/cloning the value of b into a, instead of overriding the pointer a to avoid "linking" the variables.
-
+⚠️ All variables are pointers. Thus keep in mind that something like `a = b` does **not** copy/clone the value of b into a instead these are now fully equal
+and changing the value for one affects the other, meaning a points to b. Thus look out when dealing with primitives especially, you might want something like this `a = b.clone()` instead.
 <details>
  <summary>How is this still typesafe?</summary>
 
