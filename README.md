@@ -275,16 +275,45 @@ setTo10((myVariable))
 
 
 ### Function overloading
-Function overloading is not allowed. 
+Function overloading is allowed, however is written in a more concise way to avoid writing duplicate functions and documentation. 
 ```java
-myFunction = {}
-myFunction = (int a) {} // error
+myFunction = (void a or int a) {
+  // You can use the variable "a" outside the if blocks below, however note the lowest common type is void.
+  // If it was string for example the lowest common type would be obj.
+  if a.type == void{ // The compiler will require these if statements
+  }
+  else if a.type == int{
+    // Automatic casting to the int type will happen inside this block
+  }
+}
+myFunction() // Valid
+myFunction(1) // Valid
 ```
 This ensures that less duplicate documentation is written
 and related code is inside the same function.
 
 Optional function parameters should help you out if you allow multiple different types of inputs in your function for example.
-This is documented further below.
+
+
+## Null safety and optional parameters
+All variables must have a starting/default value when defined, which means
+that code like this: `a;` will not work. Thus there is no `null` type in A.
+
+Optional function parameters must have a default value.
+
+You can make parameters optional by writing `optional: var1, var2, etc...`.
+Here is an example:
+```java
+multiply = returns int (int a, int b, optional: int c = 1, int d = 1){ 
+  return a * b * c * d
+}
+multiply(10, 20) // Valid
+multiply(10, 20, 30, 40) // Not valid, optional parameters must have the variable name
+multiply(10, 20, c:30, d:40); // Valid
+multiply(10, 20, c:30) // Valid
+multiply(10, 20, d:40) // Valid
+```
+
 
 
 ### Return multiple values
@@ -399,26 +428,6 @@ myLoop = for index i = 0; i > numbers.length; i++ {
   current = numbers[i] // access number at index position in numbers array
 }
 myLoop() // Only executed once you call it
-```
-
-
-## Null safety and optional parameters
-All variables must have a starting/default value when defined, which means
-that code like this: `a;` will not work. Thus there is no `null` type in A.
-
-Optional function parameters must have a default value.
-
-You can make parameters optional by writing `optional: var1, var2, etc...`.
-Here is an example:
-```java
-multiply = returns int (int a, int b, optional: int c = 1, int d = 1){ 
-  return a * b * c * d
-}
-multiply(10, 20) // Valid
-multiply(10, 20, 30, 40) // Not valid, optional parameters must have the variable name
-multiply(10, 20, c:30, d:40); // Valid
-multiply(10, 20, c:30) // Valid
-multiply(10, 20, d:40) // Valid
 ```
 
 
