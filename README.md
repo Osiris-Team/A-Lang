@@ -245,7 +245,7 @@ setTo10(myVariable)
 The compiler enforces the usage of double parenthesis when defining and using a function that has no side effects,
 meaning that it doesn't update its arguments or other variables/fields of the object (except global fields). For this to work you either only read the argument or clone it and update its clone only.
 
-So we can modify the previous example, which removes the whole purpose of the setTo10 function, however it should clarify everything:
+So we can modify the previous example, which removes the whole purpose of the setTo10 function, however it should clarify the idea:
 ```java
 setTo10 = ((clone int a)) {
   a = 10
