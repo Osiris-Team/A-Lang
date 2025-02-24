@@ -164,9 +164,10 @@ Note that primitives must not be imported because the compiler adds a hidden imp
 <details>
 <summary>Why is there no public/private?</summary>
  
-All variables are public by default. If you search public and private on GitHub
-you will see that public is used around 422 million times and private only 177M times,
-thus public is the default, to reduce the amount of code written.
+All variables are public by default (except inside functions/scopes of course, those are not accessible from outside). 
+If you are a library developer, you can use the variable modifier `hidden` to hide
+variables from the developer. Note that the developer can show them again though. Thus `hidden` should mean "better not touch unless you know what you are doing,
+this is used internally, not part of the public API and subject to change".
 </details>
 
 <details>
